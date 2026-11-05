@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elliptic PDEs and Beyond 2027 | IIT Hyderabad</title>
+<meta name="description" content="Elliptic PDEs and Beyond 2027, an international conference organised by the Department of Mathematics, IIT Hyderabad, February 4–6, 2027.">
+<link rel="canonical" href="https://epicpde.github.io/beyond/">
+<meta property="og:title" content="Elliptic PDEs and Beyond 2027">
+<meta property="og:description" content="Elliptic PDEs and Beyond 2027, an international conference organised by the Department of Mathematics, IIT Hyderabad, February 4–6, 2027.">
+<meta property="og:url" content="https://epicpde.github.io/beyond/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#13233F;
+    --ink-2:#1E3354;
+    --paper:#F5F7FA;
+    --white:#FFFFFF;
+    --mist:#DDE4EC;
+    --steel:#5A6B80;
+    --amber:#D9822B;
+    --amber-dark:#B5661A;
+    --serif:"Spectral", Georgia, "Times New Roman", serif;
+    --sans:"Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --wrap:1160px;
+    --gutter:clamp(20px,4vw,40px);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:76px}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:2px}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
+  .skip{position:absolute;left:-999px;top:8px;background:var(--white);padding:8px 14px;z-index:100}
+  .skip:focus{left:8px}
+
+  /* ---------- Header ---------- */
+  .site-header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .25s,box-shadow .25s}
+  .site-header.solid{background:rgba(19,35,63,.97);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white)}
+  .brand-mark{width:34px;height:34px;border:1.5px solid rgba(255,255,255,.7);border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:17px}
+  .brand-text{line-height:1.15;font-size:14px}
+  .brand-text strong{display:block;font-family:var(--serif);font-weight:500;font-size:17px}
+  .brand-text span{opacity:.7}
+  .nav ul{list-style:none;margin:0;padding:0;display:flex;gap:4px}
+  .nav a{display:block;padding:8px 12px;color:rgba(255,255,255,.82);text-decoration:none;font-size:15px;border-radius:4px}
+  .nav a:hover{color:var(--white);background:rgba(255,255,255,.08)}
+  .nav .nav-cta{background:var(--amber);color:var(--white);margin-left:8px}
+  .nav .nav-cta:hover{background:var(--amber-dark)}
+  .menu-btn{display:none;background:none;border:1px solid rgba(255,255,255,.4);color:var(--white);border-radius:4px;padding:7px 12px;font:inherit;font-size:14px;cursor:pointer}
+  @media (max-width:980px){
+    .menu-btn{display:block}
+    .nav{position:absolute;top:68px;left:0;right:0;background:var(--ink);display:none;border-top:1px solid rgba(255,255,255,.08)}
+    .nav.open{display:block}
+    .nav ul{flex-direction:column;padding:12px var(--gutter) 20px}
+    .nav .nav-cta{margin:8px 0 0;text-align:center}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;background:var(--ink);color:var(--white);min-height:min(88vh,760px);display:flex;align-items:flex-end;overflow:hidden}
+  #field{position:absolute;inset:0;width:100%;height:100%}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(19,35,63,.94) 0%,rgba(19,35,63,.7) 45%,rgba(19,35,63,.15) 100%);pointer-events:none}
+  .hero .wrap{position:relative;z-index:2;width:100%;padding-top:130px;padding-bottom:72px}
+  .hero-org{font-size:16px;color:rgba(255,255,255,.75);margin:0 0 22px}
+  .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,7.4vw,96px);line-height:1;letter-spacing:-.015em;margin:0;max-width:11ch}
+  .hero h1 .yr{display:block;font-weight:300;color:rgba(255,255,255,.55);margin-top:.08em}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:12px 40px;margin:36px 0 36px;font-size:17px}
+  .hero-meta div{border-left:2px solid var(--amber);padding-left:14px;line-height:1.35}
+  .hero-meta small{display:block;color:rgba(255,255,255,.6);font-size:14px}
+  .actions{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{display:inline-block;padding:13px 22px;border-radius:4px;text-decoration:none;font-weight:600;font-size:15px;border:1.5px solid transparent;transition:background .15s,color .15s}
+  .btn-primary{background:var(--amber);color:var(--white)}
+  .btn-primary:hover{background:var(--amber-dark)}
+  .btn-ghost{border-color:rgba(255,255,255,.45);color:var(--white)}
+  .btn-ghost:hover{background:rgba(255,255,255,.1)}
+  .eq{position:absolute;right:var(--gutter);bottom:28px;z-index:2;font-family:var(--serif);font-style:italic;color:rgba(255,255,255,.45);font-size:14px}
+  @media (max-width:640px){.eq{display:none}}
+
+  /* ---------- Notice strip ---------- */
+  .notice{background:var(--white);border-bottom:1px solid var(--mist)}
+  .notice .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;padding-top:18px;padding-bottom:18px;font-size:15px}
+  .notice p{margin:0}
+  .notice a{color:var(--amber-dark);font-weight:600}
+
+  /* ---------- Sections ---------- */
+  section.block{padding:clamp(64px,9vw,104px) 0}
+  section.block.alt{background:var(--white);border-top:1px solid var(--mist);border-bottom:1px solid var(--mist)}
+  .sec-grid{display:grid;grid-template-columns:260px 1fr;gap:clamp(24px,5vw,72px)}
+  @media (max-width:860px){.sec-grid{grid-template-columns:1fr}}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,3.6vw,40px);line-height:1.15;margin:0 0 10px}
+  .sec-head p{margin:0;color:var(--steel);font-size:15px}
+  .prose{max-width:66ch}
+  .prose p{margin:0 0 1.1em}
+  .lede{font-family:var(--serif);font-size:clamp(20px,2.1vw,24px);line-height:1.5;margin:0 0 1em}
+  .tba{display:inline-block;font-size:13px;font-weight:600;color:var(--steel);background:var(--paper);border:1px dashed #B7C3D1;border-radius:3px;padding:1px 8px}
+
+  /* topics */
+  .topics{list-style:none;padding:0;margin:28px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+  .topics li{border:1px solid var(--mist);background:var(--paper);border-radius:999px;padding:6px 14px;font-size:15px}
+  .alt .topics li{background:var(--paper)}
+
+  /* speakers */
+  .speakers{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:28px 24px;margin:0;padding:0;list-style:none}
+  .speaker{display:flex;gap:14px;align-items:flex-start}
+  .avatar{flex:none;width:64px;height:64px;border-radius:50%;background:var(--mist);display:grid;place-items:center;font-family:var(--serif);font-size:20px;color:var(--steel);overflow:hidden}
+  .avatar img{width:100%;height:100%;object-fit:cover}
+  .speaker h3{font-family:var(--serif);font-weight:500;font-size:19px;margin:4px 0 2px;line-height:1.25}
+  .speaker p{margin:0;font-size:14.5px;color:var(--steel);line-height:1.4}
+  .note{margin-top:32px;font-size:15px;color:var(--steel)}
+
+  /* dates timeline */
+  .timeline{list-style:none;margin:0;padding:0;position:relative}
+  .timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:1.5px;background:var(--mist)}
+  .timeline li{position:relative;padding:0 0 26px 40px;display:grid;grid-template-columns:200px 1fr;gap:4px 24px}
+  .timeline li:last-child{padding-bottom:0}
+  .timeline li::before{content:"";position:absolute;left:0;top:6px;width:16px;height:16px;border-radius:50%;background:var(--white);border:2px solid var(--steel)}
+  .timeline li.key::before{background:var(--amber);border-color:var(--amber)}
+  .timeline time,.timeline .when{font-weight:600}
+  .timeline span{color:var(--ink)}
+  @media (max-width:600px){.timeline li{grid-template-columns:1fr}}
+
+  /* programme */
+  .tabs{display:flex;gap:4px;border-bottom:1px solid var(--mist);margin-bottom:24px;overflow-x:auto}
+  .tab{background:none;border:0;border-bottom:2px solid transparent;padding:10px 16px;font:inherit;font-size:15px;color:var(--steel);cursor:pointer;white-space:nowrap;margin-bottom:-1px}
+  .tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--amber);font-weight:600}
+  .day{display:none}
+  .day.active{display:block}
+  .sched{width:100%;border-collapse:collapse;font-size:15.5px}
+  .sched th,.sched td{text-align:left;padding:12px 0;border-bottom:1px solid var(--mist);vertical-align:top}
+  .sched th{width:150px;font-weight:600;color:var(--steel);font-variant-numeric:tabular-nums;padding-right:16px}
+  .sched tr.break td,.sched tr.break th{color:var(--steel);font-style:italic}
+
+  /* registration */
+  .fees{width:100%;border-collapse:collapse;margin:8px 0 24px;font-size:15.5px}
+  .fees th,.fees td{padding:12px 14px;border-bottom:1px solid var(--mist);text-align:left}
+  .fees thead th{font-size:14px;color:var(--steel);font-weight:600;border-bottom:1.5px solid var(--ink)}
+  .fees td:not(:first-child),.fees th:not(:first-child){text-align:right;font-variant-numeric:tabular-nums}
+  .table-scroll{overflow-x:auto}
+
+  /* venue */
+  .venue-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+  @media (max-width:760px){.venue-cols{grid-template-columns:1fr}}
+  .venue-cols h3,.org-group h3{font-family:var(--serif);font-weight:500;font-size:21px;margin:0 0 8px}
+  .venue-cols address{font-style:normal}
+  .travel{list-style:none;padding:0;margin:0}
+  .travel li{padding:10px 0;border-bottom:1px solid var(--mist);display:flex;justify-content:space-between;gap:16px;font-size:15.5px}
+  .travel li span:last-child{color:var(--steel);white-space:nowrap}
+  .map{margin-top:32px;border:1px solid var(--mist);border-radius:6px;overflow:hidden;aspect-ratio:16/7;background:var(--mist)}
+  .map iframe{width:100%;height:100%;border:0;display:block}
+
+  /* organisers */
+  .orgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px}
+  .org-group ul{list-style:none;padding:0;margin:0}
+  .org-group li{padding:8px 0;border-bottom:1px solid var(--mist);font-size:15.5px}
+  .org-group li small{display:block;color:var(--steel);font-size:14px}
+
+  /* sponsors */
+  .sponsors{display:flex;flex-wrap:wrap;gap:16px}
+  .logo-slot{width:180px;height:84px;border:1px dashed #B7C3D1;border-radius:6px;display:grid;place-items:center;color:var(--steel);font-size:14px;background:var(--white)}
+
+  /* contact */
+  .contact-card{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+  .contact-card h3{font-size:14px;font-weight:600;color:var(--steel);margin:0 0 4px}
+  .contact-card p{margin:0}
+  .contact-card a{color:var(--amber-dark);font-weight:600;text-decoration:none}
+  .contact-card a:hover{text-decoration:underline}
+
+  /* footer */
+  footer{background:var(--ink);color:rgba(255,255,255,.75);padding:48px 0 36px;font-size:15px}
+  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px}
+  .foot strong{font-family:var(--serif);font-weight:500;color:var(--white);font-size:20px;display:block}
+  .foot nav a{color:rgba(255,255,255,.75);text-decoration:none;margin-right:18px}
+  .foot nav a:hover{color:var(--white)}
+  .fine{margin-top:32px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);font-size:13.5px;color:rgba(255,255,255,.5)}
+
+  /* ---------- Multi-page additions ---------- */
+  .nav a[aria-current]{color:var(--white);box-shadow:inset 0 -2px 0 var(--amber);border-radius:0}
+  .nav .nav-cta[aria-current]{box-shadow:none;border-radius:4px;background:var(--amber-dark)}
+  @media (max-width:980px){.nav a[aria-current]{box-shadow:inset 3px 0 0 var(--amber)}}
+
+  .page-head{position:relative;background:var(--ink);color:var(--white);overflow:hidden}
+  .page-head::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(19,35,63,.95) 0%,rgba(19,35,63,.75) 50%,rgba(19,35,63,.3) 100%);pointer-events:none}
+  .page-head .wrap{position:relative;z-index:2;padding-top:132px;padding-bottom:56px}
+  .crumbs{font-size:14px;color:rgba(255,255,255,.65);margin:0 0 14px}
+  .crumbs a{color:rgba(255,255,255,.85);text-decoration:none}
+  .crumbs a:hover{text-decoration:underline}
+  .page-head h1{font-family:var(--serif);font-weight:400;font-size:clamp(38px,5.4vw,64px);line-height:1.05;margin:0;letter-spacing:-.01em}
+  .page-head p.sub{margin:14px 0 0;color:rgba(255,255,255,.75);max-width:60ch}
+
+  /* home: links into the inner pages */
+  .explore{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));border-top:1px solid var(--mist);border-left:1px solid var(--mist)}
+  .explore a{display:block;padding:24px 22px;border-right:1px solid var(--mist);border-bottom:1px solid var(--mist);text-decoration:none;background:var(--white);transition:background .15s}
+  .explore a:hover{background:var(--paper)}
+  .explore strong{display:block;font-family:var(--serif);font-weight:500;font-size:21px;margin-bottom:4px}
+  .explore span{font-size:14.5px;color:var(--steel);line-height:1.45;display:block}
+  .more{display:inline-block;margin-top:24px;color:var(--amber-dark);font-weight:600;text-decoration:none}
+  .more:hover{text-decoration:underline}
+  .next-page{border-top:1px solid var(--mist);background:var(--white)}
+  .next-page .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:28px;padding-bottom:28px;font-size:15px}
+  .next-page a{color:var(--ink);font-weight:600;text-decoration:none}
+  .next-page a:hover{color:var(--amber-dark)}
+  .next-page small{display:block;color:var(--steel);font-weight:400}
+
+  /* ---------- Single-file routing ---------- */
+  [hidden]{display:none!important}
+  .banner{user-select:none;-webkit-user-select:none;position:relative;background:var(--ink);color:var(--white);overflow:hidden}
+  .banner::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(19,35,63,.95) 0%,rgba(19,35,63,.75) 50%,rgba(19,35,63,.3) 100%)}
+  .banner.is-home{min-height:min(88vh,760px);display:flex;align-items:flex-end}
+  .banner.is-home::after{background:linear-gradient(90deg,rgba(19,35,63,.94) 0%,rgba(19,35,63,.7) 45%,rgba(19,35,63,.15) 100%)}
+  .banner .wrap{position:relative;z-index:2;width:100%}
+  .hero-content{padding-top:130px;padding-bottom:72px}
+  .inner-content{padding-top:132px;padding-bottom:56px}
+  .banner.is-home .inner-content,.banner:not(.is-home) .hero-content,.banner:not(.is-home) .eq{display:none}
+  .hero-title{font-family:var(--serif);font-weight:400;font-size:clamp(44px,7.4vw,96px);line-height:1;letter-spacing:-.015em;margin:0;max-width:11ch}
+  .hero-title .yr{display:block;font-weight:300;color:rgba(255,255,255,.55);margin-top:.08em}
+  .banner h1#page-title{font-family:var(--serif);font-weight:400;font-size:clamp(38px,5.4vw,64px);line-height:1.05;margin:0;letter-spacing:-.01em;outline:none}
+  .banner p.sub{margin:14px 0 0;color:rgba(255,255,255,.75);max-width:60ch}
+  .banner p.sub:empty{display:none}
+  .subhead{font-family:var(--serif);font-weight:500;font-size:22px;margin:40px 0 12px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Elliptic PDEs and Beyond 2027, back to top">
+      <span class="brand-mark" aria-hidden="true">Δ</span>
+      <span class="brand-text"><strong>Elliptic PDEs and Beyond</strong><span>IIT Hyderabad · 2027</span></span>
+    </a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#speakers">Speakers</a></li>
+        <li><a href="#programme">Programme</a></li>
+        <li><a href="#dates">Dates</a></li>
+        <li><a href="#venue">Venue</a></li>
+        <li><a href="#organisers">Organisers</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="nav-cta" href="#registration">Register</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="banner is-home" aria-label="Conference title">
+    <canvas id="field" aria-hidden="true"></canvas>
+    <div class="wrap hero-content">
+      <p class="hero-org">Department of Mathematics, Indian Institute of Technology Hyderabad</p>
+      <h1 class="hero-title">Elliptic PDEs and Beyond <span class="yr">2027</span></h1>
+      <div class="hero-meta">
+        <div>February 4–6, 2027<small>Thursday to Saturday</small></div>
+        <div>IIT Hyderabad<small>Kandi, Sangareddy, Telangana</small></div>
+      </div>
+      <div class="actions">
+        <a class="btn btn-primary" href="#registration">Register</a>
+        <a class="btn btn-ghost" href="#about">About the conference</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="notice">
+    <div class="wrap">
+      <p>Registration and abstract submission open soon.</p>
+      <a href="#dates">See important dates</a>
+    </div>
+  </div>
+
+  <section class="block" id="about" aria-labelledby="about-h">
+    <div class="wrap sec-grid">
+      <div class="sec-head"><h2 id="about-h">About</h2></div>
+      <div>
+        <div class="prose">
+          <p class="lede">A three-day meeting on elliptic partial differential equations and the questions that grow out of them.</p>
+          <p>Elliptic PDEs and Beyond 2027 brings together researchers working on the analysis of elliptic equations and on the parabolic, nonlocal and geometric problems built on the same ideas. The programme includes invited lectures by leading experts, contributed talks, and dedicated time for doctoral students and early-career researchers to present their work.</p>
+          <p>The conference is organised by the Department of Mathematics, IIT Hyderabad, and will be held on campus from February 4 to 6, 2027. Talks are welcome on all aspects of elliptic PDEs, including:</p>
+          
+        <ul class="topics" aria-label="Themes">
+          <li>Regularity theory</li>
+          <li>Nonlinear elliptic equations</li>
+          <li>Nonlocal and fractional operators</li>
+          <li>Free boundary problems</li>
+          <li>Calculus of variations</li>
+          <li>Spectral theory and eigenvalue problems</li>
+          <li>Homogenization</li>
+          <li>Numerical analysis of PDEs</li>
+        </ul>
+        </div></div>
+    </div>
+  </section>
+
+  <section class="block alt" id="speakers" aria-labelledby="speakers-h">
+    <div class="wrap sec-grid">
+      <div class="sec-head"><h2 id="speakers-h">Invited speakers</h2><p>Listed alphabetically. More speakers will be announced.</p></div>
+      <div>
+        <ul class="speakers">
+          <li class="speaker"><div class="avatar">A</div><div><h3>Speaker name</h3><p>Institution, Country</p></div></li><li class="speaker"><div class="avatar">B</div><div><h3>Speaker name</h3><p>Institution, Country</p></div></li><li class="speaker"><div class="avatar">C</div><div><h3>Speaker name</h3><p>Institution, Country</p></div></li><li class="speaker"><div class="avatar">D</div><div><h3>Speaker name</h3><p>Institution, Country</p></div></li><li class="speaker"><div class="avatar">E</div><div><h3>Speaker name</h3><p>Institution, Country</p></div></li><li class="speaker"><div class="avatar">F</div><div><h3>Speaker name</h3><p>Institution, Country</p></div></li><li class="speaker"><div class="avatar">G</div><div><h3>Speaker name</h3><p>Institution, Country</p></div></li><li class="speaker"><div class="avatar">H</div><div><h3>Speaker name</h3><p>Institution, Country</p></div></li>
+        </ul>
+        <p class="note">Titles and abstracts will be posted here once confirmed.</p></div>
+    </div>
+  </section>
+
+  <section class="block" id="programme" aria-labelledby="programme-h">
+    <div class="wrap sec-grid">
+      <div class="sec-head"><h2 id="programme-h">Programme</h2><p>Tentative. All times are IST (UTC+5:30).</p></div>
+      <div>
+        <div class="tabs" role="tablist" aria-label="Conference days">
+          <button class="tab" role="tab" aria-selected="true" aria-controls="d1" id="t1">Thu, Feb 4</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="d2" id="t2" tabindex="-1">Fri, Feb 5</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="d3" id="t3" tabindex="-1">Sat, Feb 6</button>
+        </div>
+        <div class="day active" id="d1" role="tabpanel" aria-labelledby="t1">
+          <table class="sched">
+            <tr><th>09:00 – 09:30</th><td>Registration and opening</td></tr>
+            <tr><th>09:30 – 10:30</th><td>Invited lecture <span class="tba">TBA</span></td></tr>
+            <tr class="break"><th>10:30 – 11:00</th><td>Tea</td></tr>
+            <tr><th>11:00 – 12:30</th><td>Invited lectures <span class="tba">TBA</span></td></tr>
+            <tr class="break"><th>12:30 – 14:00</th><td>Lunch</td></tr>
+            <tr><th>14:00 – 16:00</th><td>Contributed talks</td></tr>
+            <tr><th>16:30 – 18:00</th><td>Poster session</td></tr>
+          </table>
+        </div>
+        <div class="day" id="d2" role="tabpanel" aria-labelledby="t2">
+          <table class="sched">
+            <tr><th>09:30 – 10:30</th><td>Invited lecture <span class="tba">TBA</span></td></tr>
+            <tr class="break"><th>10:30 – 11:00</th><td>Tea</td></tr>
+            <tr><th>11:00 – 12:30</th><td>Invited lectures <span class="tba">TBA</span></td></tr>
+            <tr class="break"><th>12:30 – 14:00</th><td>Lunch</td></tr>
+            <tr><th>14:00 – 16:00</th><td>Contributed talks</td></tr>
+            <tr><th>19:30</th><td>Conference dinner</td></tr>
+          </table>
+        </div>
+        <div class="day" id="d3" role="tabpanel" aria-labelledby="t3">
+          <table class="sched">
+            <tr><th>09:30 – 10:30</th><td>Invited lecture <span class="tba">TBA</span></td></tr>
+            <tr class="break"><th>10:30 – 11:00</th><td>Tea</td></tr>
+            <tr><th>11:00 – 12:30</th><td>Invited lectures <span class="tba">TBA</span></td></tr>
+            <tr><th>12:30 – 13:00</th><td>Closing remarks</td></tr>
+          </table>
+        </div></div>
+    </div>
+  </section>
+
+  <section class="block alt" id="dates" aria-labelledby="dates-h">
+    <div class="wrap sec-grid">
+      <div class="sec-head"><h2 id="dates-h">Important dates</h2></div>
+      <div>
+      <ol class="timeline">
+        <li><span class="when">To be announced</span><span>Registration and abstract submission open</span></li>
+        <li><span class="when">To be announced</span><span>Deadline for abstracts of contributed talks and posters</span></li>
+        <li><span class="when">To be announced</span><span>Notification of acceptance</span></li>
+        <li><span class="when">To be announced</span><span>Last date for registration</span></li>
+        <li class="key"><time datetime="2027-02-04">February 4–6, 2027</time><span>Conference at IIT Hyderabad</span></li>
+      </ol></div>
+    </div>
+  </section>
+
+  <section class="block" id="registration" aria-labelledby="registration-h">
+    <div class="wrap sec-grid">
+      <div class="sec-head"><h2 id="registration-h">Registration</h2><p>Fees cover conference materials, lunches and tea.</p></div>
+      <div>
+        <div class="table-scroll">
+          <table class="fees">
+            <thead><tr><th>Category</th><th>Early</th><th>Regular</th></tr></thead>
+            <tbody>
+              <tr><td>Research scholars and students</td><td>₹ —</td><td>₹ —</td></tr>
+              <tr><td>Postdoctoral fellows</td><td>₹ —</td><td>₹ —</td></tr>
+              <tr><td>Faculty (India)</td><td>₹ —</td><td>₹ —</td></tr>
+              <tr><td>Participants from abroad</td><td>US$ —</td><td>US$ —</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3 class="subhead">How to register</h3>
+        <div class="prose">
+          <p>Fill in the registration form and pay the fee for your category. Contributed talks and posters need an abstract, submitted through the same form.</p>
+          <p>Limited financial support for travel and local accommodation may be available for research scholars. Details will be shared with the registration form.</p>
+        </div>
+        <div class="actions"><a class="btn btn-primary" href="#" aria-disabled="true">Registration form (opens soon)</a></div></div>
+    </div>
+  </section>
+
+  <section class="block alt" id="venue" aria-labelledby="venue-h">
+    <div class="wrap sec-grid">
+      <div class="sec-head"><h2 id="venue-h">Venue and travel</h2></div>
+      <div>
+        <div class="venue-cols">
+          <div>
+            <h3>Department of Mathematics, IIT Hyderabad</h3>
+            <address>Indian Institute of Technology Hyderabad<br>Kandi, Sangareddy, Telangana 502284, India</address>
+          </div>
+          <div>
+            <h3>Accommodation</h3>
+            <p>Accommodation for invited speakers will be arranged on campus. Information on guest houses and nearby hotels will be posted here for other participants.</p>
+          </div>
+        </div>
+        <div class="map">
+          <iframe title="Map of IIT Hyderabad" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=IIT+Hyderabad,+Kandi,+Sangareddy&output=embed"></iframe>
+        </div>
+        <h3 class="subhead">Reaching the campus</h3>
+        <ul class="travel">
+          <li><span>Rajiv Gandhi International Airport</span><span>approx. 70 km</span></li>
+          <li><span>Secunderabad / Hyderabad railway stations</span><span>approx. 60 km</span></li>
+          <li><span>Lingampally railway station</span><span>approx. 30 km</span></li>
+        </ul></div>
+    </div>
+  </section>
+
+  <section class="block" id="organisers" aria-labelledby="organisers-h">
+    <div class="wrap sec-grid">
+      <div class="sec-head"><h2 id="organisers-h">Organisers</h2></div>
+      <div>
+        <div class="orgs">
+          <div class="org-group">
+            <h3>Organising committee</h3>
+            <ul>
+              <li>Name<small>Department of Mathematics, IIT Hyderabad</small></li>
+              <li>Name<small>Department of Mathematics, IIT Hyderabad</small></li>
+              <li>Name<small>Department of Mathematics, IIT Hyderabad</small></li>
+            </ul>
+          </div>
+          <div class="org-group">
+            <h3>Scientific committee</h3>
+            <ul>
+              <li>Name<small>Institution</small></li>
+              <li>Name<small>Institution</small></li>
+              <li>Name<small>Institution</small></li>
+            </ul>
+          </div>
+        </div></div>
+    </div>
+  </section>
+
+  <section class="block alt" id="sponsors" aria-labelledby="sponsors-h">
+    <div class="wrap sec-grid">
+      <div class="sec-head"><h2 id="sponsors-h">Supported by</h2></div>
+      <div>
+        <div class="sponsors">
+          <div class="logo-slot">IIT Hyderabad</div>
+          <div class="logo-slot">Sponsor logo</div>
+          <div class="logo-slot">Sponsor logo</div>
+        </div></div>
+    </div>
+  </section>
+
+  <section class="block" id="contact" aria-labelledby="contact-h">
+    <div class="wrap sec-grid">
+      <div class="sec-head"><h2 id="contact-h">Contact</h2><p>Questions about registration, travel or the programme.</p></div>
+      <div>
+        <div class="contact-card">
+          <div><h3>Email</h3><p><a href="mailto:epde2027@example.com">epde2027@example.com</a></p></div>
+          <div><h3>Convener</h3><p>Name<br>Department of Mathematics, IIT Hyderabad</p></div>
+          <div><h3>Phone</h3><p>+91 —</p></div>
+        </div></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><a href="#top" style="text-decoration:none"><strong>Elliptic PDEs and Beyond 2027</strong></a>February 4–6, 2027 · Department of Mathematics, IIT Hyderabad</div>
+      <nav aria-label="Footer"><a href="#about">About</a><a href="#speakers">Speakers</a><a href="#programme">Programme</a><a href="#dates">Dates</a><a href="#venue">Venue</a><a href="#organisers">Organisers</a><a href="#contact">Contact</a><a href="#registration">Registration</a></nav>
+    </div>
+    <p class="fine">© 2027 Department of Mathematics, IIT Hyderabad.</p>
+  </div>
+</footer>
+
+<script>
+/* Header: solid after hero, mobile menu */
+(function(){
+  const header=document.querySelector('.site-header');
+  const hero=document.querySelector('.banner');
+  const onScroll=()=>header.classList.toggle('solid',window.scrollY>hero.offsetHeight-80);
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+  const btn=document.querySelector('.menu-btn'),nav=document.getElementById('nav');
+  btn.addEventListener('click',()=>{const o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o);header.classList.add('solid');});
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded',false);}));
+})();
+
+/* Programme tabs */
+(function(){
+  const tabs=[...document.querySelectorAll('.tab')];
+  if(!tabs.length)return;
+  function select(t){
+    tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;
+      document.getElementById(x.getAttribute('aria-controls')).classList.toggle('active',on);});
+    t.focus();
+  }
+  tabs.forEach((t,i)=>{
+    t.addEventListener('click',()=>select(t));
+    t.addEventListener('keydown',e=>{
+      if(e.key==='ArrowRight')select(tabs[(i+1)%tabs.length]);
+      if(e.key==='ArrowLeft')select(tabs[(i-1+tabs.length)%tabs.length]);
+    });
+  });
+})();
+
+/* Banner: heat spreading from the boundary until it settles into the steady state (Δu = 0).
+   The grid is relaxed with damped Jacobi steps (explicit heat equation; damping removes checkerboard artifacts).
+   Visitors can click or drag on the banner to add heat; it diffuses away again afterwards. */
+(function(){
+  const cv=document.getElementById('field');
+  if(!cv)return;
+  const ctx=cv.getContext('2d');
+  const banner=cv.parentElement;
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const off=document.createElement('canvas'),octx=off.getContext('2d');
+  const CELL=11, STEPS_PER_FRAME=40, OMEGA=.8;
+  let W=0,H=0,cols,rows,u,v,img,t0=performance.now(),visible=true,running=false,last=0;
+  const sources=[];
+
+  // colour map: navy -> deep blue -> steel -> amber -> pale gold
+  const STOPS=[[0,[19,35,63]],[.32,[30,58,98]],[.56,[70,104,145]],[.8,[217,130,43]],[1,[251,224,182]]];
+  const LUT=new Uint8ClampedArray(256*3);
+  for(let n=0;n<256;n++){
+    const x=n/255;let k=0;while(k<STOPS.length-2&&x>STOPS[k+1][0])k++;
+    const [a,ca]=STOPS[k],[b,cb]=STOPS[k+1],f=(x-a)/(b-a);
+    for(let c=0;c<3;c++)LUT[n*3+c]=ca[c]+(cb[c]-ca[c])*f;
+  }
+
+  function setup(force){
+    const w=cv.clientWidth,h=cv.clientHeight;
+    const dpr=Math.min(window.devicePixelRatio||1,2);
+    cv.width=w*dpr;cv.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+    const same=u&&Math.abs(w-W)<60&&Math.abs(h-H)<60;
+    W=w;H=h;
+    if(same&&!force)return;          // small resizes (mobile address bar) keep the current state
+    cols=Math.max(60,Math.round(W/CELL));rows=Math.max(24,Math.round(H/CELL));
+    u=new Float32Array(cols*rows);v=new Float32Array(cols*rows);
+    off.width=cols;off.height=rows;img=octx.createImageData(cols,rows);
+    t0=performance.now();
+  }
+
+  const bump=(x,c,w)=>Math.exp(-(((x-c)/w)**2));
+  function boundary(t){
+    for(let j=0;j<rows;j++){
+      const y=j/(rows-1);
+      const r=.5+.5*Math.sin(Math.PI*2*y+t*.22);       // right edge: slowly travelling warm bands
+      u[j*cols+cols-1]=Math.min(1,.15+.9*r*r);
+      u[j*cols]=0;                                       // left edge kept cold so the title stays readable
+    }
+    for(let i=0;i<cols;i++){
+      const x=i/(cols-1);
+      u[i]=.95*bump(x,.86+.05*Math.sin(t*.17),.07);                          // top
+      u[(rows-1)*cols+i]=bump(x,.68+.08*Math.sin(t*.13+1),.11);              // bottom
+    }
+  }
+
+  function step(now){
+    for(let s=0;s<STEPS_PER_FRAME;s++){
+      for(let j=1;j<rows-1;j++){
+        const o=j*cols;
+        for(let i=1;i<cols-1;i++){const k=o+i;v[k]=u[k]+OMEGA*(.25*(u[k-1]+u[k+1]+u[k-cols]+u[k+cols])-u[k]);}
+      }
+      for(let j=1;j<rows-1;j++){const o=j*cols;for(let i=1;i<cols-1;i++)u[o+i]=v[o+i];}
+      for(const p of sources){
+        if(p.until<now)continue;
+        for(let dj=-2;dj<=2;dj++)for(let di=-2;di<=2;di++){
+          if(di*di+dj*dj>5)continue;
+          const i=p.i+di,j=p.j+dj;
+          if(i>0&&j>0&&i<cols-1&&j<rows-1)u[j*cols+i]=1;
+        }
+      }
+    }
+    while(sources.length&&sources[0].until<now)sources.shift();
+  }
+
+  function render(){
+    const d=img.data;
+    for(let k=0;k<u.length;k++){
+      const n=(Math.max(0,Math.min(1,u[k]))*255)|0,p=k*4;
+      d[p]=LUT[n*3];d[p+1]=LUT[n*3+1];d[p+2]=LUT[n*3+2];d[p+3]=255;
+    }
+    octx.putImageData(img,0,0);
+    ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+    ctx.drawImage(off,0,0,W,H);
+
+    // isotherms of the current field
+    const sx=W/(cols-1),sy=H/(rows-1);
+    ctx.strokeStyle='rgba(255,255,255,.13)';ctx.lineWidth=.8;ctx.beginPath();
+    for(let L=.1;L<.95;L+=.1){
+      for(let j=0;j<rows-1;j++)for(let i=0;i<cols-1;i++){
+        const a=u[j*cols+i],b=u[j*cols+i+1],c=u[(j+1)*cols+i+1],e=u[(j+1)*cols+i];
+        const code=(a>L?8:0)|(b>L?4:0)|(c>L?2:0)|(e>L?1:0);
+        if(code===0||code===15)continue;
+        const x=i*sx,y=j*sy;
+        const T=[x+sx*(L-a)/(b-a),y],R=[x+sx,y+sy*(L-b)/(c-b)],B=[x+sx*(L-e)/(c-e),y+sy],Lf=[x,y+sy*(L-a)/(e-a)];
+        const seg=(p,q)=>{ctx.moveTo(p[0],p[1]);ctx.lineTo(q[0],q[1]);};
+        switch(code){
+          case 1:case 14:seg(Lf,B);break; case 2:case 13:seg(B,R);break;
+          case 3:case 12:seg(Lf,R);break; case 4:case 11:seg(T,R);break;
+          case 5:seg(Lf,T);seg(B,R);break; case 6:case 9:seg(T,B);break;
+          case 7:case 8:seg(Lf,T);break; case 10:seg(T,R);seg(Lf,B);break;
+        }
+      }
+    }
+    ctx.stroke();
+  }
+
+  function frame(now){
+    if(!visible||document.hidden){running=false;return;}
+    if(now-last>33){boundary((now-t0)/1000);step(now);render();last=now;}
+    requestAnimationFrame(frame);
+  }
+  function start(){if(!running&&!reduce){running=true;requestAnimationFrame(frame);}}
+
+  // click or drag to add heat
+  let dragging=false,lastAdd=0;
+  function addHeat(e){
+    const r=cv.getBoundingClientRect();
+    const i=Math.round((e.clientX-r.left)/r.width*(cols-1)),j=Math.round((e.clientY-r.top)/r.height*(rows-1));
+    sources.push({i,j,until:performance.now()+1400});
+    if(sources.length>60)sources.shift();
+    if(reduce){for(let n=0;n<40;n++)step(performance.now());render();}
+  }
+  banner.addEventListener('pointerdown',e=>{
+    if(e.target.closest('a,button,input'))return;
+    dragging=true;addHeat(e);
+  });
+  banner.addEventListener('pointermove',e=>{
+    if(!dragging)return;const n=performance.now();
+    if(n-lastAdd>40){addHeat(e);lastAdd=n;}
+  });
+  window.addEventListener('pointerup',()=>dragging=false);
+
+  new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible)start();}).observe(banner);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)start();});
+
+  let lastH=0;
+  window.addEventListener('resize',()=>{
+    const h=cv.clientHeight,force=Math.abs(h-lastH)>120; // banner changed shape (home <-> inner page): restart the spread
+    lastH=h;setup(force);
+    if(reduce){boundary(0);for(let n=0;n<4000/STEPS_PER_FRAME;n++)step(0);}
+    render();
+  });
+
+  setup(true);lastH=cv.clientHeight;
+  if(reduce){boundary(0);for(let n=0;n<4000/STEPS_PER_FRAME;n++)step(0);render();}
+  else{render();start();}
+})();
+
+
+/* Highlight the menu item of the section currently on screen */
+(function(){
+  const links=[...document.querySelectorAll('#nav a[href^="#"]')];
+  const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting)return;
+      links.forEach(a=>a.removeAttribute('aria-current'));
+      const a=map.get(e.target.id);if(a)a.setAttribute('aria-current','true');
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('main section[id]').forEach(s=>io.observe(s));
+})();
+</script>
+</body>
+</html>
