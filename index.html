@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Elliptic PDEs and Beyond 2027 | IIT Hyderabad</title>
-<meta name="description" content="Elliptic PDEs and Beyond 2027, an international conference organised by the Department of Mathematics, IIT Hyderabad, February 4–6, 2027.">
-<link rel="canonical" href="https://epicpde.github.io/beyond/">
+<title>Elliptic PDEs and Beyond 2027 (EPIC 2027) | IIT Hyderabad</title>
+<meta name="description" content="Elliptic PDEs and Beyond 2027 (EPIC 2027): a conference on elliptic and nonlinear PDEs, geometry, functional inequalities and nonlocal analysis. Department of Mathematics, IIT Hyderabad, February 4–6, 2027.">
+<link rel="icon" type="image/png" href="maths_logo.png">
+<link rel="canonical" href="https://epicpde.github.io/EPIB/">
 <meta property="og:title" content="Elliptic PDEs and Beyond 2027">
-<meta property="og:description" content="Elliptic PDEs and Beyond 2027, an international conference organised by the Department of Mathematics, IIT Hyderabad, February 4–6, 2027.">
-<meta property="og:url" content="https://epicpde.github.io/beyond/">
+<meta property="og:description" content="Elliptic PDEs and Beyond 2027 (EPIC 2027): a conference on elliptic and nonlinear PDEs, geometry, functional inequalities and nonlocal analysis. Department of Mathematics, IIT Hyderabad, February 4–6, 2027.">
+<meta property="og:url" content="https://epicpde.github.io/EPIB/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -43,7 +44,11 @@
   .site-header.solid{background:rgba(19,35,63,.97);box-shadow:0 1px 0 rgba(255,255,255,.06)}
   .bar{display:flex;align-items:center;justify-content:space-between;height:68px}
   .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white)}
-  .brand-mark{width:34px;height:34px;border:1.5px solid rgba(255,255,255,.7);border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:17px}
+  .brand-mark{width:40px;height:40px;border-radius:50%;background:var(--white);display:grid;place-items:center;overflow:hidden;flex:none}
+  .brand-mark img{width:38px;height:38px;display:block}
+  /* IITH emblem only (the logo file also contains the institute name) */
+  .brand-iith{background:var(--white) url("iith_logo.png") no-repeat;background-size:80px auto;background-position:-18.9px -5.4px;position:relative}
+  .brand-iith::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--white)}
   .brand-text{line-height:1.15;font-size:14px}
   .brand-text strong{display:block;font-family:var(--serif);font-weight:500;font-size:17px}
   .brand-text span{opacity:.7}
@@ -94,35 +99,73 @@
   @media (max-width:860px){.sec-grid{grid-template-columns:1fr}}
   .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,3.6vw,40px);line-height:1.15;margin:0 0 10px}
   .sec-head p{margin:0;color:var(--steel);font-size:15px}
+  .sec-head p.sec-sub{font-family:var(--serif);font-size:21px;color:var(--ink);line-height:1.3}
   .prose{max-width:66ch}
   .prose p{margin:0 0 1.1em}
   .lede{font-family:var(--serif);font-size:clamp(20px,2.1vw,24px);line-height:1.5;margin:0 0 1em}
   .tba{display:inline-block;font-size:13px;font-weight:600;color:var(--steel);background:var(--paper);border:1px dashed #B7C3D1;border-radius:3px;padding:1px 8px}
 
   /* topics */
+  .steps{list-style:none;counter-reset:st;padding:0;margin:0 0 28px}
+  .steps li{counter-increment:st;position:relative;padding:0 0 22px 52px}
+  .steps li::before{content:counter(st);position:absolute;left:0;top:0;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;font-family:var(--serif);font-size:17px}
+  .steps strong{display:block;font-weight:600;padding-top:4px}
+  .steps span{color:var(--steel);font-size:15.5px}
+  /* About: faint photo of the Mathematics building behind the text */
+  #about{position:relative;isolation:isolate;overflow:hidden}
+  #about::before{content:"";position:absolute;inset:0;z-index:-1;background:url("Math_building.jpeg") center/auto 72% no-repeat;opacity:.4;filter:grayscale(20%);-webkit-mask-image:linear-gradient(to bottom,transparent 5%,#000 22%,#000 78%,transparent 95%),linear-gradient(to right,transparent 2%,#000 18%,#000 82%,transparent 98%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to bottom,transparent 5%,#000 22%,#000 78%,transparent 95%),linear-gradient(to right,transparent 2%,#000 18%,#000 82%,transparent 98%);mask-composite:intersect}
+  @media (max-width:700px){#about::before{background-size:cover}}
+  /* Venue: faint photo behind the section */
+  #venue{position:relative;isolation:isolate;overflow:hidden}
+  #venue::before{content:"";position:absolute;inset:0;z-index:-1;background:url("venue_background.jpg") center/cover no-repeat;opacity:.18;filter:grayscale(20%);-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0%,#000 12%,#000 88%,transparent 100%)}
+  #venue .route summary,#venue .r-body,#venue .venue-cols{text-shadow:0 0 3px rgba(255,255,255,.9)}
+  /* About: brown text over the photo */
+  #about{--about-ink:#3E2414}
+  #about h2,#about .lede,#about .prose p,#about .subhead,#about .topic-list li{color:var(--about-ink);text-shadow:0 0 3px rgba(255,255,255,.95),0 0 1px #fff}
+  #about .prose p:not(.lede),#about .topic-list li{font-weight:500}
+  #about .topic-list,#about .topic-list li{border-color:rgba(74,44,26,.18)}
+  .topic-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;column-gap:40px;border-top:1px solid var(--mist)}
+  .topic-list li{padding:12px 0 12px 22px;border-bottom:1px solid var(--mist);position:relative;font-size:16px;line-height:1.45}
+  .topic-list li::before{content:"";position:absolute;left:2px;top:20px;width:8px;height:8px;border-radius:50%;background:var(--amber)}
+  @media (max-width:700px){.topic-list{grid-template-columns:1fr}}
   .topics{list-style:none;padding:0;margin:28px 0 0;display:flex;flex-wrap:wrap;gap:8px}
   .topics li{border:1px solid var(--mist);background:var(--paper);border-radius:999px;padding:6px 14px;font-size:15px}
   .alt .topics li{background:var(--paper)}
 
   /* speakers */
-  .speakers{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:28px 24px;margin:0;padding:0;list-style:none}
-  .speaker{display:flex;gap:14px;align-items:flex-start}
-  .avatar{flex:none;width:64px;height:64px;border-radius:50%;background:var(--mist);display:grid;place-items:center;font-family:var(--serif);font-size:20px;color:var(--steel);overflow:hidden}
-  .avatar img{width:100%;height:100%;object-fit:cover}
-  .speaker h3{font-family:var(--serif);font-weight:500;font-size:19px;margin:4px 0 2px;line-height:1.25}
+  .speakers{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0 32px;margin:0;padding:0;list-style:none;border-top:1px solid var(--mist)}
+  .speaker{padding:14px 0;border-bottom:1px solid var(--mist)}
+  .speaker h3{font-family:var(--serif);font-weight:500;font-size:19px;margin:0 0 2px;line-height:1.25}
   .speaker p{margin:0;font-size:14.5px;color:var(--steel);line-height:1.4}
   .note{margin-top:32px;font-size:15px;color:var(--steel)}
 
   /* dates timeline */
-  .timeline{list-style:none;margin:0;padding:0;position:relative}
-  .timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:1.5px;background:var(--mist)}
-  .timeline li{position:relative;padding:0 0 26px 40px;display:grid;grid-template-columns:200px 1fr;gap:4px 24px}
+  .timeline{list-style:none;margin:0;padding:0;position:relative;counter-reset:tl}
+  .timeline li{position:relative;padding:0 0 22px 52px;counter-increment:tl}
   .timeline li:last-child{padding-bottom:0}
-  .timeline li::before{content:"";position:absolute;left:0;top:6px;width:16px;height:16px;border-radius:50%;background:var(--white);border:2px solid var(--steel)}
-  .timeline li.key::before{background:var(--amber);border-color:var(--amber)}
-  .timeline time,.timeline .when{font-weight:600}
-  .timeline span{color:var(--ink)}
-  @media (max-width:600px){.timeline li{grid-template-columns:1fr}}
+  .timeline li::before{content:counter(tl);position:absolute;left:0;top:-4px;width:34px;height:34px;border-radius:50%;background:transparent;border:1.5px solid var(--ink);display:grid;place-items:center;font-family:var(--serif);font-size:17px;color:var(--ink)}
+  .timeline summary{display:grid;grid-template-columns:200px 1fr 20px;gap:4px 24px;align-items:start;cursor:pointer;list-style:none;border-radius:3px}
+  .timeline summary::-webkit-details-marker{display:none}
+  .timeline .when{font-weight:600}
+  .timeline .what{color:var(--ink)}
+  .timeline summary:hover .what{color:var(--amber-dark)}
+  .timeline .chev{width:20px;height:20px;position:relative;top:2px}
+  .timeline .chev::before{content:"";position:absolute;left:5px;top:4px;width:7px;height:7px;border-right:1.6px solid var(--steel);border-bottom:1.6px solid var(--steel);transform:rotate(45deg);transition:transform .2s}
+  .timeline details[open] .chev::before{transform:translateY(3px) rotate(-135deg)}
+  .timeline details[open] .what{font-weight:600}
+  .tl-body{margin:10px 44px 6px 224px;color:var(--steel);font-size:15.5px;max-width:60ch;animation:tl-in .2s ease-out}
+  .tl-body p{margin:0 0 .6em}
+  .tl-body .fees{margin:4px 0 12px;font-size:15px;color:var(--ink)}
+  .tl-body .fees th,.tl-body .fees td{padding:9px 12px}
+  .tl-body .fees td:last-child{white-space:nowrap}
+  .tl-body a{color:var(--amber-dark);font-weight:600}
+  @keyframes tl-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.tl-body{animation:none}.timeline .chev::before{transition:none}}
+  @media (max-width:600px){
+    .timeline summary{grid-template-columns:1fr 20px}
+    .timeline .when{grid-column:1}.timeline .what{grid-column:1}.timeline .chev{grid-column:2;grid-row:1}
+    .tl-body{margin:8px 0 4px}
+  }
 
   /* programme */
   .tabs{display:flex;gap:4px;border-bottom:1px solid var(--mist);margin-bottom:24px;overflow-x:auto}
@@ -130,6 +173,41 @@
   .tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--amber);font-weight:600}
   .day{display:none}
   .day.active{display:block}
+  .prog{list-style:none;margin:0;padding:0;border-top:1px solid var(--mist)}
+  .prog .slot{border-bottom:1px solid var(--mist)}
+  .prog .chair{padding:16px 0 6px;display:flex}
+  .prog .chair .p-time{padding:0}
+  .prog .chair .p-what{font-size:14px;color:var(--steel);font-style:italic}
+
+  .prog .slot>.p-time,.prog .slot>.p-what{display:inline-block;padding:13px 0}
+  .prog .p-time{width:150px;padding-right:16px;font-weight:600;color:var(--steel);font-variant-numeric:tabular-nums;font-size:15.5px;flex:none}
+  .prog .p-what{font-size:15.5px}
+  .prog .slot.brk .p-what,.prog .slot.brk .p-time{color:var(--steel);font-style:italic}
+  .prog summary{display:grid;grid-template-columns:150px 1fr 20px;align-items:start;padding:13px 0;cursor:pointer;list-style:none}
+  .prog summary::-webkit-details-marker{display:none}
+  .prog summary .p-time{width:auto}
+  .prog .p-kind{font-weight:600;margin-right:10px}
+  .prog .p-speaker{color:var(--steel)}
+  .prog summary:hover .p-kind{color:var(--amber-dark)}
+  .prog .chev{width:20px;height:20px;position:relative;top:1px}
+  .prog .chev::before{content:"";position:absolute;left:5px;top:4px;width:7px;height:7px;border-right:1.6px solid var(--steel);border-bottom:1.6px solid var(--steel);transform:rotate(45deg);transition:transform .2s}
+  .prog details[open] .chev::before{transform:translateY(3px) rotate(-135deg)}
+  .p-body{margin:0 36px 16px 150px;padding:14px 18px;background:var(--white);border:1px solid var(--mist);border-left:3px solid var(--amber);border-radius:4px;font-size:15px;animation:tl-in .2s ease-out;max-width:62ch}
+  .p-body p{margin:0 0 .6em}.p-body p:last-child{margin-bottom:0}
+  .sec-grid>*,.day,.prog,.prog details,.p-body,.p-abs{min-width:0}
+  .prog .slot{overflow:hidden}
+  .math-block{max-width:100%;overflow-x:auto;overflow-y:hidden;margin:.4em 0;padding:2px 0}
+  .p-abs mjx-container[display="true"]{margin:.6em 0 !important}
+  .p-who span{color:var(--steel)}
+  .p-title{font-family:var(--serif);font-size:18px;font-style:italic}
+  .p-abs{color:var(--ink)}
+  @media (prefers-reduced-motion:reduce){.p-body{animation:none}.prog .chev::before{transition:none}}
+  @media (max-width:600px){
+    .prog summary{grid-template-columns:1fr 20px}.prog summary .p-time{grid-column:1}.prog summary .p-what{grid-column:1}.prog summary .chev{grid-column:2;grid-row:1}
+    .prog .slot>.p-time{display:block;padding:13px 0 0}.prog .slot>.p-what{display:block;padding:2px 0 13px}
+    .prog .p-speaker{display:block}.p-body{margin:0 0 14px}
+    .prog .chair .p-time{display:none}
+  }
   .sched{width:100%;border-collapse:collapse;font-size:15.5px}
   .sched th,.sched td{text-align:left;padding:12px 0;border-bottom:1px solid var(--mist);vertical-align:top}
   .sched th{width:150px;font-weight:600;color:var(--steel);font-variant-numeric:tabular-nums;padding-right:16px}
@@ -150,18 +228,51 @@
   .travel{list-style:none;padding:0;margin:0}
   .travel li{padding:10px 0;border-bottom:1px solid var(--mist);display:flex;justify-content:space-between;gap:16px;font-size:15.5px}
   .travel li span:last-child{color:var(--steel);white-space:nowrap}
+  .callout{background:var(--white);border:1px solid var(--mist);border-left:3px solid var(--amber);border-radius:4px;padding:20px 22px;margin-bottom:24px;max-width:72ch}
+  .callout p{margin:0 0 .8em;font-size:15.5px}
+  .callout strong{font-weight:600}
+  .callout .btn{margin-top:4px}
+  .routes{border-top:1px solid var(--mist)}
+  .route{border-bottom:1px solid var(--mist)}
+  .route summary{display:grid;grid-template-columns:1fr auto 20px;gap:16px;align-items:center;padding:16px 0;cursor:pointer;list-style:none}
+  .route summary::-webkit-details-marker{display:none}
+  .route .r-from{font-weight:600}
+  .route summary:hover .r-from{color:var(--amber-dark)}
+  .route .r-dist{color:var(--steel);font-size:15px;white-space:nowrap}
+  .route .chev{width:20px;height:20px;position:relative}
+  .route .chev::before{content:"";position:absolute;left:5px;top:4px;width:7px;height:7px;border-right:1.6px solid var(--steel);border-bottom:1.6px solid var(--steel);transform:rotate(45deg);transition:transform .2s}
+  .route[open] .chev::before{transform:translateY(3px) rotate(-135deg)}
+  .r-body{padding:0 0 20px;max-width:68ch;font-size:15.5px;animation:tl-in .2s ease-out}
+  .r-body h4{font-size:14px;font-weight:600;color:var(--steel);margin:4px 0 8px}
+  .r-body p{margin:0 0 10px}
+  .r-body a{color:var(--amber-dark);font-weight:600}
+  .r-steps{margin:0 0 14px;padding-left:22px}
+  .r-steps li{padding:3px 0}
+  @media (prefers-reduced-motion:reduce){.r-body{animation:none}.route .chev::before{transition:none}}
   .map{margin-top:32px;border:1px solid var(--mist);border-radius:6px;overflow:hidden;aspect-ratio:16/7;background:var(--mist)}
   .map iframe{width:100%;height:100%;border:0;display:block}
+  .map-side{margin-top:24px;aspect-ratio:1/1;max-width:300px;box-shadow:0 4px 18px rgba(19,35,63,.08)}
+  @media (max-width:860px){.map-side{aspect-ratio:4/3;max-width:420px}}
 
   /* organisers */
   .orgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px}
+  .orgs-top{display:flex;flex-direction:column;align-items:center;gap:28px;margin-bottom:44px;text-align:center}
+  .orgs-top .org-group{width:100%;max-width:340px}
+  .orgs-bottom{display:grid;grid-template-columns:1fr 1fr;gap:32px 40px;align-items:start}
+  .orgs-col{display:grid;gap:36px}
+  .orgs-end{margin:44px 0 0}
+  @media (max-width:700px){.orgs-top{text-align:left;align-items:stretch}.orgs-top .org-group{max-width:none}.orgs-bottom{grid-template-columns:1fr}}
   .org-group ul{list-style:none;padding:0;margin:0}
   .org-group li{padding:8px 0;border-bottom:1px solid var(--mist);font-size:15.5px}
   .org-group li small{display:block;color:var(--steel);font-size:14px}
 
   /* sponsors */
-  .sponsors{display:flex;flex-wrap:wrap;gap:16px}
-  .logo-slot{width:180px;height:84px;border:1px dashed #B7C3D1;border-radius:6px;display:grid;place-items:center;color:var(--steel);font-size:14px;background:var(--white)}
+  .hosts{display:flex;flex-wrap:wrap;gap:24px}
+  .host{margin:0;background:var(--white);border:1px solid var(--mist);border-radius:6px;padding:24px 28px 18px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:14px;flex:1 1 240px;max-width:320px}
+  .host-maths{width:170px;height:170px}
+  /* the IITH file has wide white margins: show only the emblem area */
+  .host-iith{display:block;width:170px;height:172px;background:url("iith_logo.png") no-repeat;background-size:188.7% auto;background-position:46.9% 46.2%}
+  .host figcaption{font-size:14.5px;color:var(--steel);text-align:center}
 
   /* contact */
   .contact-card{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
@@ -174,7 +285,8 @@
   footer{background:var(--ink);color:rgba(255,255,255,.75);padding:48px 0 36px;font-size:15px}
   .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px}
   .foot strong{font-family:var(--serif);font-weight:500;color:var(--white);font-size:20px;display:block}
-  .foot nav a{color:rgba(255,255,255,.75);text-decoration:none;margin-right:18px}
+  .foot nav{display:flex;flex-wrap:wrap;gap:8px 18px;min-width:0}
+  .foot nav a{color:rgba(255,255,255,.75);text-decoration:none}
   .foot nav a:hover{color:var(--white)}
   .fine{margin-top:32px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);font-size:13.5px;color:rgba(255,255,255,.5)}
 
@@ -223,6 +335,11 @@
   .banner p.sub:empty{display:none}
   .subhead{font-family:var(--serif);font-weight:500;font-size:22px;margin:40px 0 12px}
 </style>
+<script>
+  // MathJax renders LaTeX in abstracts: \( ... \) inline, \[ ... \] and \begin{align} ... \end{align} as display maths
+  window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEnvironments:true,tags:'none'},chtml:{scale:0.95},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -230,8 +347,9 @@
 <header class="site-header" id="top">
   <div class="wrap bar">
     <a class="brand" href="#top" aria-label="Elliptic PDEs and Beyond 2027, back to top">
-      <span class="brand-mark" aria-hidden="true">Δ</span>
-      <span class="brand-text"><strong>Elliptic PDEs and Beyond</strong><span>IIT Hyderabad · 2027</span></span>
+      <span class="brand-mark"><img src="maths_logo.png" alt="" width="38" height="38"></span>
+      <span class="brand-text"><strong>Elliptic PDEs and Beyond</strong><span>EPIC 2027 · IIT Hyderabad</span></span>
+      <span class="brand-mark brand-iith" role="img" aria-label="IIT Hyderabad logo"></span>
     </a>
     <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Main">
@@ -239,11 +357,10 @@
         <li><a href="#about">About</a></li>
         <li><a href="#speakers">Speakers</a></li>
         <li><a href="#programme">Programme</a></li>
-        <li><a href="#dates">Dates</a></li>
         <li><a href="#venue">Venue</a></li>
         <li><a href="#organisers">Organisers</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a class="nav-cta" href="#registration">Register</a></li>
+        <li><a class="nav-cta" href="#registration">Apply</a></li>
       </ul>
     </nav>
   </div>
@@ -260,7 +377,7 @@
         <div>IIT Hyderabad<small>Kandi, Sangareddy, Telangana</small></div>
       </div>
       <div class="actions">
-        <a class="btn btn-primary" href="#registration">Register</a>
+        <a class="btn btn-primary" href="#registration">Apply to participate</a>
         <a class="btn btn-ghost" href="#about">About the conference</a>
       </div>
     </div>
@@ -268,8 +385,8 @@
 
   <div class="notice">
     <div class="wrap">
-      <p>Registration and abstract submission open soon.</p>
-      <a href="#dates">See important dates</a>
+      <p>Call for participation is open until December 15, 2026.</p>
+      <a href="#registration">See important dates</a>
     </div>
   </div>
 
@@ -278,38 +395,61 @@
       <div class="sec-head"><h2 id="about-h">About</h2></div>
       <div>
         <div class="prose">
-          <p class="lede">A three-day meeting on elliptic partial differential equations and the questions that grow out of them.</p>
-          <p>Elliptic PDEs and Beyond 2027 brings together researchers working on the analysis of elliptic equations and on the parabolic, nonlocal and geometric problems built on the same ideas. The programme includes invited lectures by leading experts, contributed talks, and dedicated time for doctoral students and early-career researchers to present their work.</p>
-          <p>The conference is organised by the Department of Mathematics, IIT Hyderabad, and will be held on campus from February 4 to 6, 2027. Talks are welcome on all aspects of elliptic PDEs, including:</p>
-          
-        <ul class="topics" aria-label="Themes">
-          <li>Regularity theory</li>
-          <li>Nonlinear elliptic equations</li>
-          <li>Nonlocal and fractional operators</li>
-          <li>Free boundary problems</li>
-          <li>Calculus of variations</li>
-          <li>Spectral theory and eigenvalue problems</li>
-          <li>Homogenization</li>
-          <li>Numerical analysis of PDEs</li>
+          <p class="lede">The conference Elliptic PDEs and Beyond 2027 (EPIC 2027) aims to bring together researchers working in partial differential equations, differential geometry, and global analysis on manifolds.</p>
+          <p>The meeting will provide a platform for discussing recent developments and emerging directions in elliptic and nonlinear PDEs, with particular emphasis on their interactions with geometry, functional inequalities, and nonlocal analysis.</p>
+          <p>A central theme of the conference is the study of elliptic equations on curved and non-Euclidean spaces, where the underlying geometry plays a significant role in the analytical behaviour of solutions. The conference will also address developments in fractional and nonlocal elliptic equations, quasilinear problems, and functional inequalities, including their connections with geometric and spectral analysis.</p>
+          <p>Through invited lectures, research presentations, and dedicated sessions for young researchers, the conference seeks to encourage the exchange of ideas, foster interactions among researchers with complementary expertise, and stimulate new collaborations. It will provide an opportunity for senior Ph.D. students, postdoctoral researchers, and faculty to engage with current research developments and discuss challenging open problems.</p>
+        </div>
+        <h3 class="subhead" id="topics">Topics covered</h3>
+        <ul class="topic-list">
+          <li>Non-linear Elliptic Equations</li>
+
+
+          <li>Fractional and Nonlocal Elliptic Equations</li>
+          <li>Functional Inequalities: Hardy, Sobolev, and Poincaré Inequalities</li>
+          <li>Geometric Analysis and PDEs on Riemannian Manifolds</li>
+
+          <li>Regularity, Compactness, and Stability of Solutions</li>
+          <li>Spectral Properties and Variational Methods</li>
+
         </ul>
-        </div></div>
+</div>
     </div>
   </section>
 
   <section class="block alt" id="speakers" aria-labelledby="speakers-h">
     <div class="wrap sec-grid">
-      <div class="sec-head"><h2 id="speakers-h">Invited speakers</h2><p>Listed alphabetically. More speakers will be announced.</p></div>
+      <div class="sec-head"><h2 id="speakers-h">Invited speakers</h2><p>Tentative list, in alphabetical order. The final list of invited speakers will be confirmed later.</p></div>
       <div>
         <ul class="speakers">
-          <li class="speaker"><div class="avatar">A</div><div><h3>Speaker name</h3><p>Institution, Country</p></div></li><li class="speaker"><div class="avatar">B</div><div><h3>Speaker name</h3><p>Institution, Country</p></div></li><li class="speaker"><div class="avatar">C</div><div><h3>Speaker name</h3><p>Institution, Country</p></div></li><li class="speaker"><div class="avatar">D</div><div><h3>Speaker name</h3><p>Institution, Country</p></div></li><li class="speaker"><div class="avatar">E</div><div><h3>Speaker name</h3><p>Institution, Country</p></div></li><li class="speaker"><div class="avatar">F</div><div><h3>Speaker name</h3><p>Institution, Country</p></div></li><li class="speaker"><div class="avatar">G</div><div><h3>Speaker name</h3><p>Institution, Country</p></div></li><li class="speaker"><div class="avatar">H</div><div><h3>Speaker name</h3><p>Institution, Country</p></div></li>
+          <li class="speaker"><h3>Adimurthi</h3><p>Indian Institute of Technology Kanpur</p></li>
+          <li class="speaker"><h3>T V Anoop</h3><p>Indian Institute of Technology Madras</p></li>
+          <li class="speaker"><h3>Rakesh Arora</h3><p>Indian Institute of Technology Varanasi</p></li>
+          <li class="speaker"><h3>Kaushik Bal</h3><p>Indian Institute of Technology Kanpur</p></li>
+          <li class="speaker"><h3>Mousomi Bhakta</h3><p>Indian Institute of Science Education and Research Pune</p></li>
+          <li class="speaker"><h3>Anup Biswas</h3><p>Indian Institute of Science Education and Research Pune</p></li>
+          <li class="speaker"><h3>Ujjal Das</h3><p>National Institute of Science Education and Research Bhubaneswar</p></li>
+          <li class="speaker"><h3>Debdip Ganguly</h3><p>Indian Statistical Institute Delhi Centre</p></li>
+          <li class="speaker"><h3>Prashanta Garain</h3><p>Indian Institute of Science Education and Research Berhampur</p></li>
+          <li class="speaker"><h3>Tuhin Ghosh</h3><p>Harish-Chandra Research Institute</p></li>
+          <li class="speaker"><h3>Ali Hyder</h3><p>TIFR Centre for Applicable Mathematics</p></li>
+          <li class="speaker"><h3>Debabrata Karmakar</h3><p>TIFR Centre for Applicable Mathematics</p></li>
+          <li class="speaker"><h3>Deepak Kumar</h3><p>Indian Institute of Technology Roorkee</p></li>
+          <li class="speaker"><h3>Sandeep Kunnath</h3><p>TIFR Centre for Applicable Mathematics</p></li>
+          <li class="speaker"><h3>Arka Mallick</h3><p>Indian Institute of Science Bengaluru</p></li>
+          <li class="speaker"><h3>Saikat Mazumdar</h3><p>Indian Institute of Technology Bombay</p></li>
+          <li class="speaker"><h3>Kaushik Mohanta</h3><p>Indian Institute of Technology Goa</p></li>
+          <li class="speaker"><h3>Prosenjit Roy</h3><p>Indian Institute of Technology Kanpur</p></li>
+          <li class="speaker"><h3>Abhishek Sarkar</h3><p>Indian Institute of Technology Jodhpur</p></li>
+          <li class="speaker"><h3>Firoj Sk</h3><p>Indian Institute of Technology Madras</p></li>
         </ul>
-        <p class="note">Titles and abstracts will be posted here once confirmed.</p></div>
+        <p class="note">In addition, seven young researchers will be selected from the applications to present their work. Titles and abstracts will be posted here as they are received, from January 2027.</p></div>
     </div>
   </section>
 
   <section class="block" id="programme" aria-labelledby="programme-h">
     <div class="wrap sec-grid">
-      <div class="sec-head"><h2 id="programme-h">Programme</h2><p>Tentative. All times are IST (UTC+5:30).</p></div>
+      <div class="sec-head"><h2 id="programme-h">Programme</h2><p>All times are IST (UTC+5:30). Select a talk for the speaker, title and abstract.</p></div>
       <div>
         <div class="tabs" role="tablist" aria-label="Conference days">
           <button class="tab" role="tab" aria-selected="true" aria-controls="d1" id="t1">Thu, Feb 4</button>
@@ -317,78 +457,431 @@
           <button class="tab" role="tab" aria-selected="false" aria-controls="d3" id="t3" tabindex="-1">Sat, Feb 6</button>
         </div>
         <div class="day active" id="d1" role="tabpanel" aria-labelledby="t1">
-          <table class="sched">
-            <tr><th>09:00 – 09:30</th><td>Registration and opening</td></tr>
-            <tr><th>09:30 – 10:30</th><td>Invited lecture <span class="tba">TBA</span></td></tr>
-            <tr class="break"><th>10:30 – 11:00</th><td>Tea</td></tr>
-            <tr><th>11:00 – 12:30</th><td>Invited lectures <span class="tba">TBA</span></td></tr>
-            <tr class="break"><th>12:30 – 14:00</th><td>Lunch</td></tr>
-            <tr><th>14:00 – 16:00</th><td>Contributed talks</td></tr>
-            <tr><th>16:30 – 18:00</th><td>Poster session</td></tr>
-          </table>
+          <ol class="prog">
+            <li class="slot"><span class="p-time">09:00 – 09:30</span><span class="p-what">Inaugural ceremony</span></li>
+            <li class="slot brk"><span class="p-time">09:30 – 10:00</span><span class="p-what">Tea break</span></li>
+            <li class="chair"><span class="p-time"></span><span class="p-what">Chair: Bhakti Bhushan Manna</span></li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">10:00 – 10:45</span><span class="p-what"><span class="p-kind">Sandeep Kunnath</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
+                  <p class="p-who"><strong>Sandeep Kunnath</strong><br><span>TIFR Centre for Applicable Mathematics</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">10:50 – 11:35</span><span class="p-what"><span class="p-kind">T V Anoop</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
+                  <p class="p-who"><strong>T V Anoop</strong><br><span>Indian Institute of Technology Madras</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">11:40 – 12:25</span><span class="p-what"><span class="p-kind">Kaushik Bal</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
+                  <p class="p-who"><strong>Kaushik Bal</strong><br><span>Indian Institute of Technology Kanpur</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot brk"><span class="p-time">12:30 – 14:00</span><span class="p-what">Lunch break</span></li>
+            <li class="chair"><span class="p-time"></span><span class="p-what">Chair: Prasun Roychowdhury</span></li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">14:00 – 14:45</span><span class="p-what"><span class="p-kind">Prashanta Garain</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
+                  <p class="p-who"><strong>Prashanta Garain</strong><br><span>Indian Institute of Science Education and Research Berhampur</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">14:50 – 15:35</span><span class="p-what"><span class="p-kind">Anup Biswas</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
+                  <p class="p-who"><strong>Anup Biswas</strong><br><span>Indian Institute of Science Education and Research Pune</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot brk"><span class="p-time">15:40 – 16:10</span><span class="p-what">Tea break</span></li>
+            <li class="chair"><span class="p-time"></span><span class="p-what">Chair: Aiyappan Srinivasan</span></li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">16:10 – 16:40</span><span class="p-what"><span class="p-kind">Deepak Kumar</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
+                  <p class="p-who"><strong>Deepak Kumar</strong><br><span>Indian Institute of Technology Roorkee</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">16:45 – 17:15</span><span class="p-what"><span class="p-kind">Rakesh Arora</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
+                  <p class="p-who"><strong>Rakesh Arora</strong><br><span>Indian Institute of Technology Varanasi</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+          </ol>
         </div>
         <div class="day" id="d2" role="tabpanel" aria-labelledby="t2">
-          <table class="sched">
-            <tr><th>09:30 – 10:30</th><td>Invited lecture <span class="tba">TBA</span></td></tr>
-            <tr class="break"><th>10:30 – 11:00</th><td>Tea</td></tr>
-            <tr><th>11:00 – 12:30</th><td>Invited lectures <span class="tba">TBA</span></td></tr>
-            <tr class="break"><th>12:30 – 14:00</th><td>Lunch</td></tr>
-            <tr><th>14:00 – 16:00</th><td>Contributed talks</td></tr>
-            <tr><th>19:30</th><td>Conference dinner</td></tr>
-          </table>
+          <ol class="prog">
+            <li class="chair"><span class="p-time"></span><span class="p-what">Chair: Sandeep Kunnath</span></li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">09:00 – 09:45</span><span class="p-what"><span class="p-kind">Adimurthi</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
+                  <p class="p-who"><strong>Adimurthi</strong><br><span>Indian Institute of Technology Kanpur</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <div class="p-abs">
+                    <!-- LaTeX is rendered by MathJax: use \( ... \) inline, \[ ... \] or \begin{align} ... \end{align} for display -->
+                    <div class="math-block">
+\begin{align}
+\int_{\mathbb{H}^N} |\nabla_{\mathbb{H}^N} u|^2 \, \mathrm{d}v_{\mathbb{H}^N} \ge \left( \frac{N-1}{2} \right)^{2} \int_{\mathbb{H}^N} u^2 \, \mathrm{d}v_{\mathbb{H}^N} + \frac{1}{4} \int_{\mathbb{H}^N} \frac{u^2}{r^2} \, \mathrm{d}v_{\mathbb{H}^N},
+\end{align}
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </li>
+            <li class="slot"><span class="p-time">09:50 – 09:55</span><span class="p-what">Group photo</span></li>
+            <li class="slot brk"><span class="p-time">09:55 – 10:20</span><span class="p-what">Tea break</span></li>
+            <li class="chair"><span class="p-time"></span><span class="p-what">Chair: Anup Biswas</span></li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">10:20 – 11:05</span><span class="p-what"><span class="p-kind">Ali Hyder</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
+                  <p class="p-who"><strong>Ali Hyder</strong><br><span>TIFR Centre for Applicable Mathematics</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">11:10 – 11:55</span><span class="p-what"><span class="p-kind">Prosenjit Roy</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
+                  <p class="p-who"><strong>Prosenjit Roy</strong><br><span>Indian Institute of Technology Kanpur</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">12:00 – 12:30</span><span class="p-what"><span class="p-kind">Abhishek Sarkar</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
+                  <p class="p-who"><strong>Abhishek Sarkar</strong><br><span>Indian Institute of Technology Jodhpur</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot brk"><span class="p-time">12:35 – 14:00</span><span class="p-what">Lunch break</span></li>
+            <li class="chair"><span class="p-time"></span><span class="p-what">Chair: Prosenjit Roy</span></li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">14:00 – 14:45</span><span class="p-what"><span class="p-kind">Mousomi Bhakta</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
+                  <p class="p-who"><strong>Mousomi Bhakta</strong><br><span>Indian Institute of Science Education and Research Pune</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">14:50 – 15:35</span><span class="p-what"><span class="p-kind">Debdip Ganguly</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
+                  <p class="p-who"><strong>Debdip Ganguly</strong><br><span>Indian Statistical Institute Delhi Centre</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot brk"><span class="p-time">15:40 – 16:10</span><span class="p-what">Tea break</span></li>
+            <li class="chair"><span class="p-time"></span><span class="p-what">Chair: T V Anoop</span></li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">16:10 – 16:40</span><span class="p-what"><span class="p-kind">Kaushik Mohanta</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
+                  <p class="p-who"><strong>Kaushik Mohanta</strong><br><span>Indian Institute of Technology Goa</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">16:45 – 17:15</span><span class="p-what"><span class="p-kind">Firoj Sk</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
+                  <p class="p-who"><strong>Firoj Sk</strong><br><span>Indian Institute of Technology Madras</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot"><span class="p-time">19:30</span><span class="p-what">Conference dinner</span></li>
+          </ol>
         </div>
         <div class="day" id="d3" role="tabpanel" aria-labelledby="t3">
-          <table class="sched">
-            <tr><th>09:30 – 10:30</th><td>Invited lecture <span class="tba">TBA</span></td></tr>
-            <tr class="break"><th>10:30 – 11:00</th><td>Tea</td></tr>
-            <tr><th>11:00 – 12:30</th><td>Invited lectures <span class="tba">TBA</span></td></tr>
-            <tr><th>12:30 – 13:00</th><td>Closing remarks</td></tr>
-          </table>
+          <ol class="prog">
+            <li class="chair"><span class="p-time"></span><span class="p-what">Chair: Debdip Ganguly</span></li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">09:00 – 09:45</span><span class="p-what"><span class="p-kind">Tuhin Ghosh</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
+                  <p class="p-who"><strong>Tuhin Ghosh</strong><br><span>Harish-Chandra Research Institute</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot brk"><span class="p-time">09:50 – 10:20</span><span class="p-what">Tea break</span></li>
+            <li class="chair"><span class="p-time"></span><span class="p-what">Chair: Tuhin Ghosh</span></li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">10:20 – 11:05</span><span class="p-what"><span class="p-kind">Debabrata Karmakar</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
+                  <p class="p-who"><strong>Debabrata Karmakar</strong><br><span>TIFR Centre for Applicable Mathematics</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">11:10 – 11:40</span><span class="p-what"><span class="p-kind">Ujjal Das</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
+                  <p class="p-who"><strong>Ujjal Das</strong><br><span>National Institute of Science Education and Research Bhubaneswar</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">11:45 – 12:15</span><span class="p-what"><span class="p-kind">Arka Mallick</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
+                  <p class="p-who"><strong>Arka Mallick</strong><br><span>Indian Institute of Science Bengaluru</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">12:20 – 12:50</span><span class="p-what"><span class="p-kind">Saikat Mazumdar</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
+                  <p class="p-who"><strong>Saikat Mazumdar</strong><br><span>Indian Institute of Technology Bombay</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot brk"><span class="p-time">12:55 – 14:15</span><span class="p-what">Lunch break</span></li>
+            <li class="chair"><span class="p-time"></span><span class="p-what">Chair: Mousomi Bhakta</span></li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">14:15 – 14:30</span><span class="p-what"><span class="p-kind">Young Researcher Talk 1</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: speaker, affiliation, title, abstract -->
+                  <p class="p-who"><strong>Speaker to be announced</strong><br><span>Affiliation</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">14:35 – 14:50</span><span class="p-what"><span class="p-kind">Young Researcher Talk 2</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: speaker, affiliation, title, abstract -->
+                  <p class="p-who"><strong>Speaker to be announced</strong><br><span>Affiliation</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">14:55 – 15:10</span><span class="p-what"><span class="p-kind">Young Researcher Talk 3</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: speaker, affiliation, title, abstract -->
+                  <p class="p-who"><strong>Speaker to be announced</strong><br><span>Affiliation</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot brk"><span class="p-time">15:15 – 15:45</span><span class="p-what">Tea break</span></li>
+            <li class="chair"><span class="p-time"></span><span class="p-what">Chair: Debabrata Karmakar</span></li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">15:45 – 16:00</span><span class="p-what"><span class="p-kind">Young Researcher Talk 4</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: speaker, affiliation, title, abstract -->
+                  <p class="p-who"><strong>Speaker to be announced</strong><br><span>Affiliation</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">16:05 – 16:20</span><span class="p-what"><span class="p-kind">Young Researcher Talk 5</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: speaker, affiliation, title, abstract -->
+                  <p class="p-who"><strong>Speaker to be announced</strong><br><span>Affiliation</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">16:25 – 16:40</span><span class="p-what"><span class="p-kind">Young Researcher Talk 6</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: speaker, affiliation, title, abstract -->
+                  <p class="p-who"><strong>Speaker to be announced</strong><br><span>Affiliation</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+            <li class="slot">
+              <details>
+                <summary><span class="p-time">16:45 – 17:00</span><span class="p-what"><span class="p-kind">Young Researcher Talk 7</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <div class="p-body">
+                  <!-- Fill in: speaker, affiliation, title, abstract -->
+                  <p class="p-who"><strong>Speaker to be announced</strong><br><span>Affiliation</span></p>
+                  <p class="p-title">Title to be announced</p>
+                  <p class="p-abs">The abstract will be posted here.</p>
+                </div>
+              </details>
+            </li>
+          </ol>
         </div></div>
     </div>
   </section>
 
-  <section class="block alt" id="dates" aria-labelledby="dates-h">
+
+  <section class="block alt" id="registration" aria-labelledby="registration-h">
     <div class="wrap sec-grid">
-      <div class="sec-head"><h2 id="dates-h">Important dates</h2></div>
+      <div class="sec-head"><h2 id="registration-h">Timeline</h2><p class="sec-sub">Participation and Registration</p></div>
       <div>
       <ol class="timeline">
-        <li><span class="when">To be announced</span><span>Registration and abstract submission open</span></li>
-        <li><span class="when">To be announced</span><span>Deadline for abstracts of contributed talks and posters</span></li>
-        <li><span class="when">To be announced</span><span>Notification of acceptance</span></li>
-        <li><span class="when">To be announced</span><span>Last date for registration</span></li>
-        <li class="key"><time datetime="2027-02-04">February 4–6, 2027</time><span>Conference at IIT Hyderabad</span></li>
-      </ol></div>
+        <li>
+          <details>
+            <summary><time class="when" datetime="2026-11-12">November 12, 2026</time><span class="what">Call for participation opens</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="tl-body">
+              <!-- Organisers: replace this paragraph with the final text for this stage -->
+              <p>Researchers interested in attending can apply through the call for participation form, using the Apply button below. The conference is aimed at senior Ph.D. students, postdoctoral researchers and faculty.</p>
+            </div>
+          </details>
+        </li>
+        <li class="key">
+          <details>
+            <summary><time class="when" datetime="2026-12-15">December 15, 2026</time><span class="what">Last date to apply</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="tl-body">
+              <!-- Organisers: replace this paragraph with the final text for this stage -->
+              <p>The call for participation closes on this date.</p>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details>
+            <summary><time class="when" datetime="2026-12-17">December 17, 2026</time><span class="what">Selected participants informed by email</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="tl-body">
+              <!-- Organisers: replace this paragraph with the final text for this stage -->
+              <p>The organisers will inform selected applicants by email. As the number of participants is limited, some applicants may be placed on a waiting list.</p>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details>
+            <summary><time class="when" datetime="2026-12-17">Dec 17 – Jan 15, 2027</time><span class="what">Payment of registration fee and fee structure</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="tl-body">
+              <!-- Organisers: replace this paragraph with the final text for this stage -->
+              <p>Selected participants will receive a payment link by email. The registration fee should be paid by January 15, 2027.</p>
+              <div class="table-scroll">
+                <table class="fees">
+                  <thead><tr><th>Category</th><th>Fee</th></tr></thead>
+                  <tbody>
+                    <tr><td>Research scholars and students</td><td>₹ —</td></tr>
+                    <tr><td>Postdoctoral fellows</td><td>₹ —</td></tr>
+                    <tr><td>Faculty</td><td>₹ —</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>The fee covers conference materials, lunches and tea.</p>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details>
+            <summary><time class="when" datetime="2027-01-16">January 16–24, 2027</time><span class="what">Submission of talk titles and abstracts</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="tl-body">
+              <!-- Organisers: replace this paragraph with the final text for this stage -->
+              <p>Participants submit the title and abstract of their talk. Abstracts will be posted on this website as they are received.</p>
+            </div>
+          </details>
+        </li>
+        <li class="key">
+          <details>
+            <summary><time class="when" datetime="2027-02-04">February 4–6, 2027</time><span class="what">Conference at IIT Hyderabad</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="tl-body">
+              <!-- Organisers: replace this paragraph with the final text for this stage -->
+              <p>The conference takes place at the Department of Mathematics, IIT Hyderabad. See the <a href="#programme">Programme</a> and <a href="#venue">Venue and travel</a> sections for the schedule and travel information.</p>
+            </div>
+          </details>
+        </li>
+      </ol>
+        <div class="actions" style="margin-top:32px"><a class="btn btn-primary" href="#" aria-disabled="true">Apply to participate (form closes December 15)</a></div></div>
     </div>
   </section>
 
-  <section class="block" id="registration" aria-labelledby="registration-h">
+  <section class="block" id="venue" aria-labelledby="venue-h">
     <div class="wrap sec-grid">
-      <div class="sec-head"><h2 id="registration-h">Registration</h2><p>Fees cover conference materials, lunches and tea.</p></div>
-      <div>
-        <div class="table-scroll">
-          <table class="fees">
-            <thead><tr><th>Category</th><th>Early</th><th>Regular</th></tr></thead>
-            <tbody>
-              <tr><td>Research scholars and students</td><td>₹ —</td><td>₹ —</td></tr>
-              <tr><td>Postdoctoral fellows</td><td>₹ —</td><td>₹ —</td></tr>
-              <tr><td>Faculty (India)</td><td>₹ —</td><td>₹ —</td></tr>
-              <tr><td>Participants from abroad</td><td>US$ —</td><td>US$ —</td></tr>
-            </tbody>
-          </table>
+      <div class="sec-head"><h2 id="venue-h">Venue and travel</h2>
+        <div class="map map-side">
+          <iframe title="Map of IIT Hyderabad" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=IIT+Hyderabad,+Kandi,+Sangareddy&output=embed"></iframe>
         </div>
-        <h3 class="subhead">How to register</h3>
-        <div class="prose">
-          <p>Fill in the registration form and pay the fee for your category. Contributed talks and posters need an abstract, submitted through the same form.</p>
-          <p>Limited financial support for travel and local accommodation may be available for research scholars. Details will be shared with the registration form.</p>
-        </div>
-        <div class="actions"><a class="btn btn-primary" href="#" aria-disabled="true">Registration form (opens soon)</a></div></div>
-    </div>
-  </section>
-
-  <section class="block alt" id="venue" aria-labelledby="venue-h">
-    <div class="wrap sec-grid">
-      <div class="sec-head"><h2 id="venue-h">Venue and travel</h2></div>
+      </div>
       <div>
         <div class="venue-cols">
           <div>
@@ -400,64 +893,154 @@
             <p>Accommodation for invited speakers will be arranged on campus. Information on guest houses and nearby hotels will be posted here for other participants.</p>
           </div>
         </div>
-        <div class="map">
-          <iframe title="Map of IIT Hyderabad" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=IIT+Hyderabad,+Kandi,+Sangareddy&output=embed"></iframe>
-        </div>
         <h3 class="subhead">Reaching the campus</h3>
-        <ul class="travel">
-          <li><span>Rajiv Gandhi International Airport</span><span>approx. 70 km</span></li>
-          <li><span>Secunderabad / Hyderabad railway stations</span><span>approx. 60 km</span></li>
-          <li><span>Lingampally railway station</span><span>approx. 30 km</span></li>
-        </ul></div>
+        <div class="callout">
+          <p><strong>Use the main gate on NH65.</strong> The campus is on NH65 (Mumbai Highway) at Kandi. Coming from Hyderabad, you pass the main gate on your right; continue to Kandi Junction (after Kings Dhaba on the left), take a U-turn and enter through the main gate. Map apps sometimes route to the old gate, which is closed.</p>
+          <p>Inside the campus, shuttle buses run from the main gate. IITH also runs a paid campus bus from Patancheru and Miyapur at scheduled times.</p>
+          <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=IIT+Hyderabad+Main+Gate,+Kandi,+Sangareddy" target="_blank" rel="noopener">Get directions in Google Maps</a>
+        </div>
+        <div class="routes">
+          <details class="route" open>
+            <summary><span class="r-from">From Rajiv Gandhi International Airport</span><span class="r-dist">about 64 km</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="r-body">
+              <h4>By cab, about 1.5 hours</h4>
+              <ol class="r-steps">
+                <li>From the airport approach road, join the Outer Ring Road (ORR) at Gandiguda.</li>
+                <li>Follow the ORR and take Exit 3 (Muthangi, Patancheru) towards Mumbai on NH65.</li>
+                <li>Drive about 15 km on NH65. The main gate is on the right; continue to Kandi Junction and take a U-turn to enter.</li>
+              </ol>
+              <h4>By bus</h4>
+              <ol class="r-steps">
+                <li>Take a TGSRTC Pushpak airport bus to BHEL or Miyapur (<a href="https://tgsrtc.telangana.gov.in/Airport-Pushpak-Bus-Timings.php" target="_blank" rel="noopener">timings</a>).</li>
+                <li>Take a city bus to Patancheru (218, 218C or 219).</li>
+                <li>From Patancheru, take an ordinary (not express) bus towards Sangareddy and get down at the IITH stop, opposite the main gate. Shared autos also run from Patancheru to the campus.</li>
+              </ol>
+            </div>
+          </details>
+          <details class="route">
+            <summary><span class="r-from">From Secunderabad Railway Station or JBS</span><span class="r-dist">about 50 km</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="r-body">
+              <ol class="r-steps">
+                <li>Take city bus 219, 226 or 226A to Patancheru (about 1.5 hours). These start at Jubilee Bus Station (JBS) and can be boarded at Secunderabad Railway Station.</li>
+                <li>From Patancheru, take an ordinary (not express) bus towards Sangareddy and get down at the IITH stop, opposite the main gate. Shared autos also run from Patancheru to the campus.</li>
+              </ol>
+              <p>District buses from JBS towards Sangareddy, Zaheerabad or Narayankhed also stop at IITH directly.</p>
+            </div>
+          </details>
+          <details class="route">
+            <summary><span class="r-from">From Nampally Railway Station or MGBS</span><span class="r-dist">about 60 km</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="r-body">
+              <p>District buses from Mahatma Gandhi Bus Station (MGBS) towards Sangareddy, Zaheerabad or Narayankhed stop at IITH directly. Otherwise:</p>
+              <ol class="r-steps">
+                <li>Take city bus 217, 218, 225C or 225C/A from MGBS to Patancheru. From Nampally, take a city bus that starts at MGBS.</li>
+                <li>From Patancheru, take an ordinary (not express) bus towards Sangareddy and get down at the IITH stop, opposite the main gate. Shared autos also run from Patancheru to the campus.</li>
+              </ol>
+            </div>
+          </details>
+          <details class="route">
+            <summary><span class="r-from">From Lingampally Railway Station</span><span class="r-dist">about 25 km</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="r-body">
+              <p>Lingampally can be reached from Secunderabad by MMTS local train.</p>
+              <ol class="r-steps">
+                <li>Go to the BHEL Circle bus stop by shared auto or bus 217L.</li>
+                <li>Take a district bus towards Sangareddy and get down at the IITH stop. Alternatively, take bus 218C to Patancheru and continue from there.</li>
+              </ol>
+            </div>
+          </details>
+          <details class="route">
+            <summary><span class="r-from">By Hyderabad Metro</span><span class="r-dist"></span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="r-body">
+              <ol class="r-steps">
+                <li>Take the Red Line to Miyapur. From Secunderabad, board at Secunderabad East (Blue Line) and change at Ameerpet.</li>
+                <li>From Miyapur, take a bus to Patancheru.</li>
+                <li>From Patancheru, take an ordinary (not express) bus towards Sangareddy and get down at the IITH stop, opposite the main gate. Shared autos also run from Patancheru to the campus.</li>
+              </ol>
+            </div>
+          </details>
+        </div>
+        <p class="note">A cab is the most convenient option from any of these places.</p></div>
     </div>
   </section>
 
-  <section class="block" id="organisers" aria-labelledby="organisers-h">
+  <section class="block alt" id="organisers" aria-labelledby="organisers-h">
     <div class="wrap sec-grid">
       <div class="sec-head"><h2 id="organisers-h">Organisers</h2></div>
       <div>
-        <div class="orgs">
-          <div class="org-group">
-            <h3>Organising committee</h3>
-            <ul>
-              <li>Name<small>Department of Mathematics, IIT Hyderabad</small></li>
-              <li>Name<small>Department of Mathematics, IIT Hyderabad</small></li>
-              <li>Name<small>Department of Mathematics, IIT Hyderabad</small></li>
-            </ul>
+        <div class="orgs-top">
+            <div class="org-group">
+              <h3>Chief Patron</h3>
+              <ul>
+                <li>Prof. B. S. Murty<small>Director, IIT Hyderabad</small></li>
+              </ul>
+            </div>
+            <div class="org-group">
+              <h3>Chairman</h3>
+              <ul>
+                <li>Prof. Anantha Lakshmi Narayana P<small>Department of Mathematics, IIT Hyderabad</small></li>
+              </ul>
+            </div>
+        </div>
+        <div class="orgs-bottom">
+          <div class="orgs-col">
+            <div class="org-group">
+              <h3>Conveners</h3>
+              <ul>
+                <li>Dr. Bhakti Bhusan Manna<small>Department of Mathematics, IIT Hyderabad</small></li>
+                <li>Dr. Prasun Roychowdhury<small>Department of Mathematics, IIT Hyderabad</small></li>
+              </ul>
+            </div>
           </div>
-          <div class="org-group">
-            <h3>Scientific committee</h3>
-            <ul>
-              <li>Name<small>Institution</small></li>
-              <li>Name<small>Institution</small></li>
-              <li>Name<small>Institution</small></li>
-            </ul>
+          <div class="orgs-col">
+            <div class="org-group">
+              <h3>Local Organizing Committee</h3>
+              <ul>
+                <li>Dr. Dhriti Sundar Patra<small>Department of Mathematics, IIT Hyderabad</small></li>
+                <li>Dr. Jyotirmoy Rana<small>Department of Mathematics, IIT Hyderabad</small></li>
+                <li>Dr. Aiyappan Srinivasan<small>Department of Mathematics, IIT Hyderabad</small></li>
+              </ul>
+            </div>
           </div>
+        </div>
+        <div class="orgs-top orgs-end">
+            <div class="org-group">
+              <h3>Administrative and Technical Staff</h3>
+              <ul>
+                <li>Mr. Dumpala Raju<small>Department of Mathematics, IIT Hyderabad</small></li>
+                <li>Mr. Katam Santhosh Reddy<small>Department of Mathematics, IIT Hyderabad</small></li>
+                <li>Mr. Anand V<small>Department of Mathematics, IIT Hyderabad</small></li>
+              </ul>
+            </div>
         </div></div>
     </div>
   </section>
 
-  <section class="block alt" id="sponsors" aria-labelledby="sponsors-h">
+  <!-- Organised by section: hidden for now
+  <section class="block" id="organised-by" aria-labelledby="organised-by-h">
     <div class="wrap sec-grid">
-      <div class="sec-head"><h2 id="sponsors-h">Supported by</h2></div>
+      <div class="sec-head"><h2 id="organised-by-h">Organised by</h2></div>
       <div>
-        <div class="sponsors">
-          <div class="logo-slot">IIT Hyderabad</div>
-          <div class="logo-slot">Sponsor logo</div>
-          <div class="logo-slot">Sponsor logo</div>
+        <div class="hosts">
+          <figure class="host">
+            <img class="host-maths" src="maths_logo.png" alt="Department of Mathematics, IIT Hyderabad logo" width="140" height="140">
+            <figcaption>Department of Mathematics</figcaption>
+          </figure>
+          <figure class="host">
+            <span class="host-iith" role="img" aria-label="Indian Institute of Technology Hyderabad logo"></span>
+            <figcaption>Indian Institute of Technology Hyderabad</figcaption>
+          </figure>
         </div></div>
     </div>
   </section>
+  -->
 
   <section class="block" id="contact" aria-labelledby="contact-h">
     <div class="wrap sec-grid">
-      <div class="sec-head"><h2 id="contact-h">Contact</h2><p>Questions about registration, travel or the programme.</p></div>
+      <div class="sec-head"><h2 id="contact-h">Contact</h2></div>
       <div>
         <div class="contact-card">
-          <div><h3>Email</h3><p><a href="mailto:epde2027@example.com">epde2027@example.com</a></p></div>
-          <div><h3>Convener</h3><p>Name<br>Department of Mathematics, IIT Hyderabad</p></div>
-          <div><h3>Phone</h3><p>+91 —</p></div>
+          <div><h3>Email</h3><p><a href="mailto:prasunrc@math.iith.ac.in">prasunrc@math.iith.ac.in</a><br><a href="mailto:bbmanna@math.iith.ac.in">bbmanna@math.iith.ac.in</a></p></div>
+          <div><h3>Venue</h3><p>Seminar Hall MA-03<br>Department of Mathematics IIT Hyderabad</p></div>
+          <div><h3>Phone</h3><p>+91 040 2359 6600</p></div>
         </div></div>
     </div>
   </section>
@@ -467,8 +1050,8 @@
 <footer>
   <div class="wrap">
     <div class="foot">
-      <div><a href="#top" style="text-decoration:none"><strong>Elliptic PDEs and Beyond 2027</strong></a>February 4–6, 2027 · Department of Mathematics, IIT Hyderabad</div>
-      <nav aria-label="Footer"><a href="#about">About</a><a href="#speakers">Speakers</a><a href="#programme">Programme</a><a href="#dates">Dates</a><a href="#venue">Venue</a><a href="#organisers">Organisers</a><a href="#contact">Contact</a><a href="#registration">Registration</a></nav>
+      <div><a href="#top" style="text-decoration:none"><strong>Elliptic PDEs and Beyond 2027</strong></a>EPIC 2027 · February 4–6, 2027 · Department of Mathematics, IIT Hyderabad</div>
+      <nav aria-label="Footer"><a href="#about">About</a><a href="#speakers">Speakers</a><a href="#programme">Programme</a><a href="#venue">Venue</a><a href="#organisers">Organisers</a><a href="#contact">Contact</a><a href="#registration">Participation</a></nav>
     </div>
     <p class="fine">© 2027 Department of Mathematics, IIT Hyderabad.</p>
   </div>
