@@ -155,6 +155,7 @@
   .timeline details[open] .what{font-weight:600}
   .tl-body{margin:10px 44px 6px 224px;color:var(--steel);font-size:15.5px;max-width:60ch;animation:tl-in .2s ease-out}
   .tl-body p{margin:0 0 .6em}
+  .tl-body .btn-pay{margin:6px 0 4px;padding:10px 18px;font-size:14.5px;color:var(--white)}
   .tl-body .fees{margin:4px 0 12px;font-size:15px;color:var(--ink)}
   .tl-body .fees th,.tl-body .fees td{padding:9px 12px}
   .tl-body .fees td:last-child{white-space:nowrap}
@@ -427,10 +428,10 @@
           <li class="speaker"><h3>Rakesh Arora</h3><p>Indian Institute of Technology Varanasi</p></li>
           <li class="speaker"><h3>Kaushik Bal</h3><p>Indian Institute of Technology Kanpur</p></li>
           <li class="speaker"><h3>Mousomi Bhakta</h3><p>Indian Institute of Science Education and Research Pune</p></li>
-          <li class="speaker"><h3>Sekhar Ghosh</h3><p>National Institute of Technology Calicut</p></li>
           <li class="speaker"><h3>Ujjal Das</h3><p>National Institute of Science Education and Research Bhubaneswar</p></li>
           <li class="speaker"><h3>Debdip Ganguly</h3><p>Indian Statistical Institute Delhi Centre</p></li>
           <li class="speaker"><h3>Prashanta Garain</h3><p>Indian Institute of Science Education and Research Berhampur</p></li>
+          <li class="speaker"><h3>Sekhar Ghosh</h3><p>National Institute of Technology Calicut</p></li>
           <li class="speaker"><h3>Tuhin Ghosh</h3><p>Harish-Chandra Research Institute</p></li>
           <li class="speaker"><h3>Ali Hyder</h3><p>TIFR Centre for Applicable Mathematics</p></li>
           <li class="speaker"><h3>Debabrata Karmakar</h3><p>TIFR Centre for Applicable Mathematics</p></li>
@@ -509,7 +510,7 @@
             </li>
             <li class="slot">
               <details>
-                <summary><span class="p-time">14:50 – 15:35</span><span class="p-what"><span class="p-kind">Anup Biswas</span></span><span class="chev" aria-hidden="true"></span></summary>
+                <summary><span class="p-time">14:50 – 15:35</span><span class="p-what"><span class="p-kind">Sekhar Ghosh</span></span><span class="chev" aria-hidden="true"></span></summary>
                 <div class="p-body">
                   <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
                   <p class="p-who"><strong>Sekhar Ghosh</strong><br><span>National Institute of Technology Calicut</span></p>
@@ -553,7 +554,7 @@
                 <div class="p-body">
                   <!-- Fill in: title and abstract (LaTeX allowed: \( \) inline, \[ \] or align for display) -->
                   <p class="p-who"><strong>Adimurthi</strong><br><span>Indian Institute of Technology Kanpur</span></p>
-                  <p class="p-title">The title to be announced</p>
+                  <p class="p-title">Title to be announced</p>
                   <div class="p-abs">
                     <!-- LaTeX is rendered by MathJax: use \( ... \) inline, \[ ... \] or \begin{align} ... \end{align} for display -->
                     <div class="math-block">
@@ -841,13 +842,15 @@
                 <table class="fees">
                   <thead><tr><th>Category</th><th>Fee</th></tr></thead>
                   <tbody>
-                    
-                    <tr><td>Research Scholars/Postdoctoral fellows</td><td>₹ 5000</td></tr>
-                    <tr><td>Regular Faculty</td><td>₹ 8000</td></tr>
+                    <tr><td>Research scholars and students</td><td>₹ —</td></tr>
+                    <tr><td>Postdoctoral fellows</td><td>₹ —</td></tr>
+                    <tr><td>Faculty</td><td>₹ —</td></tr>
                   </tbody>
                 </table>
               </div>
-              <p>The fee covers local transport and foods.</p>
+              <p>The fee covers conference materials, lunches and tea.</p>
+              <!-- Payment: replace href="#" with the payment link and remove aria-disabled="true" -->
+              <a class="btn btn-primary btn-pay" href="#" aria-disabled="true" target="_blank" rel="noopener">Pay registration fee</a>
             </div>
           </details>
         </li>
